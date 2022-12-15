@@ -1,0 +1,19 @@
+- hosts: prometheus
+  handlers:
+  tasks:
+
+    - name: Executa arquivo de docker-compose do Prometheus
+      shell: docker-compose up -d --force-recreate
+      args:
+        chdir: /opt/prometheus/
+      become: true
+
+- hosts: grafana
+  handlers:
+  tasks:
+
+    - name: Executa arquivo de docker-compose do Grafana
+      shell: docker-compose up -d --force-recreate
+      args:
+        chdir: /opt/grafana/
+      become: true
